@@ -7,6 +7,9 @@ G- Hide all open windows
 Mouse Scrool- Zoom In/ Zoom Out  
 CTRL+ Left Mouse Hold - Rotate  
 
+NOTE : Create a Folder Inside Models/3dnet extract 3dnet dataset OBJ files from   
+https://repo.acin.tuwien.ac.at/tmp/permanent/3d-net.org/  
+
 STEPS :  
 * Add UR5 Model with controls : ✔  
 * Add Tray Model✔  
