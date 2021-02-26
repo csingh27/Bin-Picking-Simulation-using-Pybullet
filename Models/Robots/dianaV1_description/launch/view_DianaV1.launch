@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="model" />
+  <arg name="gui" default="false" />
+  <arg name="limited" default="false" />
+
+
+  <param name="use_gui" value="$(arg gui)" />
+
+  <include file="$(find dianaV1_description)/launch/DianaV1_upload.launch">
+    <arg name="limited" value="$(arg limited)"/>
+  </include>
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" >
+    <param name="use_gui" value="$(arg gui)"/>
+  </node> -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher" />
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find dianaV1_description)/urdf.rviz" />
+</launch>
