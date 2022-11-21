@@ -111,7 +111,7 @@ def random_object_import(NO_OBJ):
         time.sleep(0.2)
 def remove_objects():
    	for i in range(0,NO_OBJ):
-		p.removeBody(body[i])
+            p.removeBody(body[i])
 
 print("------------------------------------- \n")
 print("CHOOSE THE OBJECT TYPES TO IMPORT ... \n")
@@ -125,11 +125,11 @@ inp=input()
 if inp==1:
     for i in range(0,NO_OBJ):
         body.append(p.loadURDF("lego/lego.urdf",[0.5+0.05*i,0.15-0.1*i,0.5]))
-	mode=0
+        mode=0
 elif inp==2:
     for i in range(0,NO_OBJ):
         body.append(p.loadURDF("sphere_small.urdf",[0.5+0.05*i,0.2-0.1*i,0.5]))
-	mode=0
+        mode=0
 else:
     print("0: Test Mode \n")
     print("9: Dataset Generation Mode \n")
@@ -138,35 +138,35 @@ else:
     obj_num=input()
     NO_OBJ=int(obj_num)
     if mode==0:
-    	random_object_import(NO_OBJ)
-	get_camera_image(0)
+        random_object_import(NO_OBJ)
+        get_camera_image(0)
     elif mode==9:
-	print("How many images do you want to generate?\n")
-	num=input()
-	for i in range(1,num+1):
-		random_object_import(NO_OBJ)
-		# Heap settling time
-		time.sleep(5) 
-		get_camera_image(i)
-		remove_objects()
-	print("Dataset Generation complete ...")
+        print("How many images do you want to generate?\n")
+        num=input()
+        for i in range(1,num+1):
+            random_object_import(NO_OBJ)
+            # Heap settling time
+            time.sleep(5) 
+            get_camera_image(i)
+            remove_objects()
+        print("Dataset Generation complete ...")
     else :
-	print("Wrong mode. Exiting ...")
+        print("Wrong mode. Exiting ...")
 
 
 
 
 def dataset_generation(num):
 	for i in range(0,num):	
-      		dataset_image = p.getCameraImage(200, 200, view_matrix_gripper, projectionMatrix,shadow=0, flags = p.ER_SEGMENTATION_MASK_OBJECT_AND_LINKINDEX, renderer=image_renderer)
-		FILE_PATH = os.path.dirname(os.path.realpath(__file__))
-	        directory='Cameraoutput/Dataset/images'
-		path=os.path.join(FILE_PATH, directory)
-		imgName='image-'+str(i+1)+'.png'
-		path=os.path.join(path , imgName)
-		print(path)
-		im = Image.fromarray(img[2]) 
-		im.save(path, '')
+            dataset_image = p.getCameraImage(200, 200, view_matrix_gripper, projectionMatrix,shadow=0, flags = p.ER_SEGMENTATION_MASK_OBJECT_AND_LINKINDEX, renderer=image_renderer)
+            FILE_PATH = os.path.dirname(os.path.realpath(__file__))
+            directory='Cameraoutput/Dataset/images'
+            path=os.path.join(FILE_PATH, directory)
+            imgName='image-'+str(i+1)+'.png'
+            path=os.path.join(path , imgName)
+            print(path)
+            im = Image.fromarray(img[2]) 
+            im.save(path, '')
 
 
 # --DEFINE THE CONTROL FUNCTIONS-- #   
